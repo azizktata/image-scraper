@@ -16,6 +16,8 @@ This Python script reads product names and references from an Excel file, search
 
 #### Requirements
 
+- git clone
+
 - Ensure you have Python installed and install the required dependencies using:
   `pip install pandas requests duckduckgo-search openpyxl`
 

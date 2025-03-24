@@ -5,6 +5,7 @@ from duckduckgo_search import DDGS
 import time
 
 country = "tunisie"
+sites = "spacenet mytek tunisianet"
 # Read Excel file
 def read_excel(file_path):
     df = pd.read_excel(file_path, dtype=str)
@@ -12,10 +13,10 @@ def read_excel(file_path):
     return [{'name': row['Nom'], 'reference': row['Référence interne']} for _, row in df.iterrows()]
 
 # Search images using DuckDuckGo API
-def search_images(query, max_results=4,retries=5, delay=5):
+def search_images(query, max_results=5,retries=5, delay=5):
     for attempt in range(retries):
         try:
-            results = DDGS().images(keywords=query+country, region="wt-wt", safesearch="on", max_results=max_results, size="Large", license_image=None,)
+            results = DDGS().images(keywords=query+sites+country, region="wt-wt", safesearch="on", max_results=max_results, size="Large", license_image=None,)
             if results:
                 return [img['image'] for img in results]  
         except Exception as e:
